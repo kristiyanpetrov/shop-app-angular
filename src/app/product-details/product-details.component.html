@@ -1,1 +1,11 @@
-<p>product-details works!</p>
+<div class="container product">
+  <div class="col-md-12">
+    <h4>{{ product.name }}</h4>
+    <h5>{{ product.price | currency }}</h5>
+    <p><span class="description">{{ product.description }}</span></p>
+    <img [src]="product.image">
+  </div>
+  <div class="col-md-2 mt-2">
+    <button class="btn btn-primary" (click)="addToCart(product)">Add to cart</button>
+  </div>
+</div>
