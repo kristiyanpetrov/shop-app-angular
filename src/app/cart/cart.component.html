@@ -1,0 +1,131 @@
+<div class="mt-5">
+  <div class="container">
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+      <div class="row">
+        <!--Billing section-->
+        <div class="col-4">
+          <h3>Billing Address</h3>
+
+          <label for="fullName"><i class="fa fa-user"></i> Full Name</label>
+          <div>
+            <input type="text" id="fullName" placeholder="John B. Williams" formControlName="fullName">
+          </div>
+          <div>
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+          </div>
+          <div>
+            <input type="text" id="email" name="email" placeholder="john@example.com" formControlName="email">
+          </div>
+          <div formGroupName="address">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <div>
+              <input type="text" id="adr" name="address" placeholder="88 Victoria St" formControlName="address">
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for="city"><i class="fa fa-building"></i> City</label>
+                <div>
+                  <input type="text" id="city" name="city" placeholder="London" formControlName="city">
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="country"><i class="fa fa-globe"></i> Country</label>
+                <div>
+                  <input type="text" id="country" name="country" placeholder="United Kingdom" formControlName="country">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for="state"><i class="fa fa-institution"></i> County</label>
+                <input type="text" id="state" name="state" placeholder="Middlesex" formControlName="county">
+              </div>
+              <div class="col-6">
+                <label for="postcode"><i class="fa fa-location-arrow"></i> Post Code</label>
+                <input type="text" id="postcode" name="postcode" placeholder="SW1" formControlName="postCode">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--END Billing section-->
+        <!--Payment section-->
+        <div formGroupName="paymentDetails" class="col-4">
+          <h3>Payment</h3>
+          <label>Accepted Cards</label>
+          <div class="icon-container">
+            <i class="fa fa-cc-visa"></i>
+            <i class="fa fa-cc-amex ml-1"></i>
+            <i class="fa fa-cc-mastercard ml-1"></i>
+            <i class="fa fa-cc-discover ml-1"></i>
+          </div>
+          <label>Name on Card</label>
+          <div>
+            <input type="text" placeholder="John B Williams" formControlName="name">
+          </div>
+          <label>Credit card number</label>
+          <div>
+            <input type="text" placeholder="1111-2222-3333-4444" formControlName="cardNumber">
+          </div>
+          <label>Valid From</label>
+          <div>
+            <input type="text" placeholder="01/20" formControlName="validFrom">
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <label>Expires End</label>
+              <input type="text" placeholder="01/23" formControlName="expiresEnd">
+            </div>
+            <div class="col-5">
+              <label>CVV</label>
+              <input type="text" placeholder="352" formControlName="cvv">
+            </div>
+          </div>
+        </div>
+        <!--END Payment section-->
+        <!--Cart section-->
+        <div class="col-3">
+          <div class="card">
+            <div class="card-body cart">
+              <div class="emptyCart" *ngIf="products.length === 0">
+                <span>
+                  Your cart is empty
+                </span>
+              </div>
+              <div *ngIf="products.length >= 1">
+                <h5>Cart
+                  <span class="float-right">
+                    <i class="fa fa-shopping-cart"></i> {{ products.length }}
+                  </span>
+                </h5>
+                <p class="cartProductPrice" *ngFor="let product of products">
+                  <span>{{ product.name }}</span>
+                  <span class="float-right">{{ product.price | currency }}</span>
+                </p>
+                <!--Select shipping price section-->
+                <!--            <div class="form-group" *ngIf="products.length >= 1">-->
+                <!--              <p>Delivery options</p>-->
+                <!--              <select class="form-control form-control-sm" [(ngModel)]="selectedLevel"-->
+                <!--                      (change)="price()" [ngModelOptions]="{standalone: true}">-->
+                <!--                <option selected="selected">Select Delivery</option>-->
+                <!--                <option *ngFor="let shippingPrice of shippingPrices" [ngValue]="shippingPrice">-->
+                <!--                  {{ shippingPrice.type }} - {{ shippingPrice.price }}-->
+                <!--                </option>-->
+                <!--              </select>-->
+                <!--            </div>-->
+                <!--END Select shipping price section-->
+              </div>
+              <hr>
+              <p>
+                <b>Total<span class="float-right">{{ total | currency }}</span></b>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--END Cart section-->
+      </div>
+      <button class="btn btn-success" type="submit" [disabled]="products.length === 0">
+        Purchase
+      </button>
+    </form>
+  </div>
+</div>

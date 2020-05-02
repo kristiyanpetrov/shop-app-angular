@@ -1,0 +1,44 @@
+.icon-container {
+  padding: 9px 0;
+  font-size: 30px;
+
+  .fa-cc-visa {
+    color: navy;
+  }
+
+  .fa-cc-amex {
+    color: blue;
+  }
+
+  .fa-cc-mastercard {
+    color: red;
+  }
+
+  .fa-cc-discover {
+    color: orange;
+  }
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.cart {
+  .emptyCart {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .cartProductPrice {
+    margin-top: 30px;
+  }
+}
