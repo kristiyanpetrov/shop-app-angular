@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -10,14 +10,17 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CartComponent implements OnInit {
   products = [];
   checkoutForm;
-  total: number;
+  totalPhonePrice: number;
   submitted = false;
+  shippingPrices;
+  selectedDelivery;
+  selectedShipPrice = false;
 
   constructor(private cartService: CartService,
               private formBuilder: FormBuilder) {
     this.checkoutForm = this.formBuilder.group({
       fullName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       address: this.formBuilder.group({
         address: ['', Validators.required],
         city: ['', Validators.required],
@@ -37,14 +40,30 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductPrice();
+    this.getShippingDetails();
   }
 
   getProductPrice() {
     this.products = this.cartService.getProducts();
     // take the price from obj and calculate it
-    this.total = this.products.map(key => {
+    this.totalPhonePrice = this.products.map(key => {
       return key.price;
     }).reduce((a, b) => a + b, 0);
+  }
+
+  getShippingDetails() {
+    this.cartService.getShippingDetails().subscribe((obj) => {
+      console.log('data is here', obj);
+      this.shippingPrices = obj;
+    });
+  }
+
+  selectedDeliveryPrice() {
+    this.selectedShipPrice = true;
+  }
+
+  calcShipPrice() {
+    return this.totalPhonePrice + this.selectedDelivery.price;
   }
 
   onSubmit(customerData) {
@@ -57,6 +76,7 @@ export class CartComponent implements OnInit {
       alert('Your order has been submitted!');
       console.warn('Your order has been submitted', customerData);
     }
+
     this.products = this.cartService.clearCart();
     this.checkoutForm.reset();
   }

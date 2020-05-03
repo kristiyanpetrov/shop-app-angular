@@ -5,7 +5,6 @@
         <!--Billing section-->
         <div class="col-4">
           <h3>Billing Address</h3>
-
           <label for="fullName"><i class="fa fa-user"></i> Full Name</label>
           <div>
             <input type="text" id="fullName" placeholder="John B. Williams" formControlName="fullName">
@@ -58,7 +57,7 @@
             <i class="fa fa-cc-mastercard ml-1"></i>
             <i class="fa fa-cc-discover ml-1"></i>
           </div>
-          <label>Name on Card</label>
+          <label>Name</label>
           <div>
             <input type="text" placeholder="John B Williams" formControlName="name">
           </div>
@@ -66,16 +65,18 @@
           <div>
             <input type="text" placeholder="1111-2222-3333-4444" formControlName="cardNumber">
           </div>
-          <label>Valid From</label>
-          <div>
-            <input type="text" placeholder="01/20" formControlName="validFrom">
-          </div>
           <div class="row">
-            <div class="col-5">
+            <div class="col-6">
+              <label>Valid From</label>
+              <input type="text" placeholder="01/20" formControlName="validFrom">
+            </div>
+            <div class="col-6">
               <label>Expires End</label>
               <input type="text" placeholder="01/23" formControlName="expiresEnd">
             </div>
-            <div class="col-5">
+          </div>
+          <div class="row">
+            <div class="col-6">
               <label>CVV</label>
               <input type="text" placeholder="352" formControlName="cvv">
             </div>
@@ -102,28 +103,31 @@
                   <span class="float-right">{{ product.price | currency }}</span>
                 </p>
                 <!--Select shipping price section-->
-                <!--            <div class="form-group" *ngIf="products.length >= 1">-->
-                <!--              <p>Delivery options</p>-->
-                <!--              <select class="form-control form-control-sm" [(ngModel)]="selectedLevel"-->
-                <!--                      (change)="price()" [ngModelOptions]="{standalone: true}">-->
-                <!--                <option selected="selected">Select Delivery</option>-->
-                <!--                <option *ngFor="let shippingPrice of shippingPrices" [ngValue]="shippingPrice">-->
-                <!--                  {{ shippingPrice.type }} - {{ shippingPrice.price }}-->
-                <!--                </option>-->
-                <!--              </select>-->
-                <!--            </div>-->
+                <div class="form-group" *ngIf="products.length >= 1">
+                  <p>Delivery options</p>
+                  <select class="form-control form-control-sm" [(ngModel)]="selectedDelivery"
+                          (change)="selectedDeliveryPrice()" [ngModelOptions]="{standalone: true}">
+                    <option selected="selected">Select Delivery</option>
+                    <option *ngFor="let shippingPrice of shippingPrices" [ngValue]="shippingPrice">
+                      {{ shippingPrice.type }} - {{ shippingPrice.price }}
+                    </option>
+                  </select>
+                </div>
                 <!--END Select shipping price section-->
               </div>
               <hr>
-              <p>
-                <b>Total<span class="float-right">{{ total | currency }}</span></b>
+              <p *ngIf="!selectedShipPrice">
+                <b>Total<span class="float-right">{{ totalPhonePrice | currency }}</span></b>
+              </p>
+              <p *ngIf="selectedShipPrice">
+                <b>Total<span class="float-right">{{ calcShipPrice() | currency }}</span></b>
               </p>
             </div>
           </div>
         </div>
         <!--END Cart section-->
       </div>
-      <button class="btn btn-success" type="submit" [disabled]="products.length === 0">
+      <button class="btn btn-success" type="submit" [disabled]="checkoutForm.invalid">
         Purchase
       </button>
     </form>
