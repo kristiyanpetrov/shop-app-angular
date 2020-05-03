@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   shippingPrices;
   selectedDelivery;
   selectedShipPrice = false;
+  totalPrice;
 
   constructor(private cartService: CartService,
               private formBuilder: FormBuilder) {
@@ -34,7 +35,8 @@ export class CartComponent implements OnInit {
         validFrom: ['', Validators.required],
         expiresEnd: ['', Validators.required],
         cvv: ['', Validators.required],
-      })
+      }),
+      total: ['']
     });
   }
 
@@ -54,17 +56,22 @@ export class CartComponent implements OnInit {
 
   getShippingDetails() {
     this.cartService.getShippingDetails().subscribe((obj) => {
-      console.log('ship data', obj);
+      // console.log('ship data is here', obj);
       this.shippingPrices = obj;
     });
   }
 
   selectedDeliveryPrice() {
     this.selectedShipPrice = true;
+    this.calcShipPrice();
   }
 
   calcShipPrice() {
-    return this.totalPhonePrice + this.selectedDelivery.price;
+    this.totalPrice = this.totalPhonePrice + this.selectedDelivery.price;
+    this.checkoutForm.patchValue({
+      total: this.totalPrice
+    });
+    console.log('check total price', this.totalPrice);
   }
 
   onSubmit(customerData) {
@@ -79,15 +86,16 @@ export class CartComponent implements OnInit {
     }
     // send submitted data to localStorage
     localStorage.setItem('dataStorage', JSON.stringify(customerData));
-    console.log(JSON.parse(localStorage.getItem(customerData)));
 
+    // reset the form and the cart price when submitted
     this.products = this.cartService.clearCart();
     this.checkoutForm.reset();
+    this.totalPrice = 0;
   }
 
   getLocalStorageData(): void {
     // getting data from localStorage
     const myItem = localStorage.getItem('dataStorage');
-    console.log('getLocalStorageData', myItem);
+    // console.log('getLocalStorageData', myItem);
   }
 }
