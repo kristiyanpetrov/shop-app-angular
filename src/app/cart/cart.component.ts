@@ -10,7 +10,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class CartComponent implements OnInit {
   products = [];
   checkoutForm;
-  totalPhonePrice: number;
+  totalPhonePrice = 0;
   submitted = false;
   shippingPrices;
   selectedDelivery;
@@ -41,6 +41,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.getProductPrice();
     this.getShippingDetails();
+    this.getLocalStorageData();
   }
 
   getProductPrice() {
@@ -53,7 +54,7 @@ export class CartComponent implements OnInit {
 
   getShippingDetails() {
     this.cartService.getShippingDetails().subscribe((obj) => {
-      console.log('data is here', obj);
+      console.log('ship data', obj);
       this.shippingPrices = obj;
     });
   }
@@ -76,8 +77,17 @@ export class CartComponent implements OnInit {
       alert('Your order has been submitted!');
       console.warn('Your order has been submitted', customerData);
     }
+    // send submitted data to localStorage
+    localStorage.setItem('dataStorage', JSON.stringify(customerData));
+    console.log(JSON.parse(localStorage.getItem(customerData)));
 
     this.products = this.cartService.clearCart();
     this.checkoutForm.reset();
+  }
+
+  getLocalStorageData(): void {
+    // getting data from localStorage
+    const myItem = localStorage.getItem('dataStorage');
+    console.log('getLocalStorageData', myItem);
   }
 }

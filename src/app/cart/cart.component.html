@@ -127,7 +127,7 @@
         </div>
         <!--END Cart section-->
       </div>
-      <button class="btn btn-success" type="submit" [disabled]="checkoutForm.invalid">
+      <button class="btn btn-success" type="submit" [disabled]="checkoutForm.invalid || products.length === 0 || !selectedShipPrice">
         Purchase
       </button>
     </form>
