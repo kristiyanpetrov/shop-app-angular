@@ -36,6 +36,8 @@ export class CartComponent implements OnInit {
         expiresEnd: ['', Validators.required],
         cvv: ['', Validators.required],
       }),
+      product: [''],
+      delivery: [''],
       total: ['']
     });
   }
@@ -69,9 +71,14 @@ export class CartComponent implements OnInit {
   calcShipPrice() {
     this.totalPrice = this.totalPhonePrice + this.selectedDelivery.price;
     this.checkoutForm.patchValue({
+      product: this.products,
+      delivery: this.selectedDelivery,
       total: this.totalPrice
     });
     console.log('check total price', this.totalPrice);
+    // remove two properties from the obj and submit just name and price of product
+    this.products.map(res => delete res.image && delete res.description);
+    console.log(this.products);
   }
 
   onSubmit(customerData) {

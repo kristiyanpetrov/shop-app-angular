@@ -98,7 +98,7 @@
                     <i class="fa fa-shopping-cart"></i> {{ products.length }}
                   </span>
                 </h5>
-                <p class="cartProductPrice" *ngFor="let product of products">
+                <p class="cartProduct" *ngFor="let product of products">
                   <span>{{ product.name }}</span>
                   <span class="float-right">{{ product.price | currency }}</span>
                 </p>
