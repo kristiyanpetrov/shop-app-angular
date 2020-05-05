@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {ActivatedRoute} from '@angular/router';
-import { products } from '../mock-data/products';
+import {products} from '../mock-data/products';
+import {Products} from '../_models/products.model';
 
 @Component({
   selector: 'app-product-details',
@@ -9,7 +10,7 @@ import { products } from '../mock-data/products';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  product;
+  product: Products;
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute) {

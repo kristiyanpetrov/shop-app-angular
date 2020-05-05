@@ -95,7 +95,7 @@
               <div *ngIf="products.length >= 1">
                 <h5>Cart
                   <span class="float-right">
-                    <i class="fa fa-shopping-cart"></i> {{ products.length }}
+                    <i class="fa fa-shopping-cart"></i>
                   </span>
                 </h5>
                 <p class="cartProduct" *ngFor="let product of products">
@@ -107,7 +107,7 @@
                   <p>Delivery options</p>
                   <select class="form-control form-control-sm" [(ngModel)]="selectedDelivery"
                           (change)="selectedDeliveryPrice()" [ngModelOptions]="{standalone: true}">
-                    <option selected="selected">Select Delivery</option>
+                    <option disabled>Select Delivery</option>
                     <option *ngFor="let shippingPrice of shippingPrices" [ngValue]="shippingPrice">
                       {{ shippingPrice.type }} - {{ shippingPrice.price }}
                     </option>
