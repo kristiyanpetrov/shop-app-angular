@@ -8,11 +8,20 @@ import {products} from '../mock-data/products';
 })
 export class ProductListComponent implements OnInit {
   products = products;
+  config: any;
 
   constructor() {
+    this.config = {
+      itemsPerPage: 6,
+      currentPage: 1,
+    };
   }
 
   ngOnInit(): void {
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
 }
