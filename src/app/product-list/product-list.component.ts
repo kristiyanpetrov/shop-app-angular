@@ -9,11 +9,20 @@ import {Products} from '../_models/products.model';
 })
 export class ProductListComponent implements OnInit {
   products: Array<Products> = products;
+  config: any;
 
   constructor() {
+    this.config = {
+      itemsPerPage: 6,
+      currentPage: 1,
+    };
   }
 
   ngOnInit(): void {
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
 }
