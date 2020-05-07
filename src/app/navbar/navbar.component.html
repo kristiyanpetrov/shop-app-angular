@@ -1,11 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <a routerLink="/" class="navbar-brand">My store</a>
+    <a routerLink="/" class="navbar-brand myStore">My store</a>
     <div class="justify-content-end">
+      <!--      <a routerLink="/cart" class="navbar-brand">-->
+      <!--        <i class="fa fa-shopping-cart"></i>-->
+      <!--        <span *ngIf="products.length >= 1"> ({{ products.length }})</span> Checkout-->
+      <!--      </a>-->
       <a routerLink="/cart" class="navbar-brand">
         <i class="fa fa-shopping-cart"></i>
-        <span *ngIf="products.length >= 1"> ({{ products.length }})</span> Checkout
       </a>
+      <span class="badge" *ngIf="products.length > 0">{{products.length}}</span>
     </div>
   </div>
 </nav>

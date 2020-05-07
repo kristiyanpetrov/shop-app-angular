@@ -88,46 +88,55 @@
           <div class="card">
             <div class="card-body cart">
               <div class="emptyCart" *ngIf="products.length === 0">
-                <span>
+                <h5>Cart
+                  <span class="float-right">
+                    <i class="fa fa-shopping-cart"></i>
+                  </span>
+                </h5>
+                <hr>
+                <p>
                   Your cart is empty
-                </span>
+                </p>
               </div>
               <div *ngIf="products.length >= 1">
                 <h5>Cart
                   <span class="float-right">
-                    <i class="fa fa-shopping-cart"></i> {{ products.length }}
+                    <i class="fa fa-shopping-cart"></i>
                   </span>
                 </h5>
                 <p class="cartProduct" *ngFor="let product of products">
-                  <span>{{ product.name }}</span>
+                  <i class="fa fa-trash-o text-danger" (click)="removeItem(product)"></i>
+                  <span class="ml-2">{{ product.name }}</span>
                   <span class="float-right">{{ product.price | currency }}</span>
                 </p>
+                <hr>
                 <!--Select shipping price section-->
-                <div class="form-group" *ngIf="products.length >= 1">
+                <div class="form-group">
                   <p>Delivery options</p>
                   <select class="form-control form-control-sm" [(ngModel)]="selectedDelivery"
                           (change)="selectedDeliveryPrice()" [ngModelOptions]="{standalone: true}">
-                    <option selected="selected">Select Delivery</option>
+                    <option disabled>Select Delivery</option>
                     <option *ngFor="let shippingPrice of shippingPrices" [ngValue]="shippingPrice">
                       {{ shippingPrice.type }} - {{ shippingPrice.price }}
                     </option>
                   </select>
                 </div>
                 <!--END Select shipping price section-->
+                <hr>
+                <p *ngIf="!selectedShipPrice">
+                  <b>Total<span class="float-right">{{ totalPhonePrice | currency }}</span></b>
+                </p>
+                <p *ngIf="selectedShipPrice">
+                  <b>Total<span class="float-right">{{ totalPrice | currency }}</span></b>
+                </p>
               </div>
-              <hr>
-              <p *ngIf="!selectedShipPrice">
-                <b>Total<span class="float-right">{{ totalPhonePrice | currency }}</span></b>
-              </p>
-              <p *ngIf="selectedShipPrice">
-                <b>Total<span class="float-right">{{ totalPrice | currency }}</span></b>
-              </p>
             </div>
           </div>
         </div>
         <!--END Cart section-->
       </div>
-      <button class="btn btn-success" type="submit" [disabled]="checkoutForm.invalid || products.length === 0 || !selectedShipPrice">
+      <button class="btn btn-success" type="submit"
+              [disabled]="checkoutForm.invalid || products.length === 0 || !selectedShipPrice">
         Purchase
       </button>
     </form>

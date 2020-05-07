@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
+import {Products} from '../_models/products.model';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,7 @@ import {CartService} from '../services/cart.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  products;
+  products: Array<Products>;
 
   constructor(private cartService: CartService) {
   }

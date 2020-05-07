@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -9,13 +9,13 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class CartComponent implements OnInit {
   products = [];
-  checkoutForm;
-  totalPhonePrice = 0;
-  submitted = false;
-  shippingPrices;
-  selectedDelivery;
+  checkoutForm: FormGroup;
+  totalPhonePrice: number = 0;
+  submitted: boolean = false;
+  shippingPrices: any;
+  selectedDelivery: any;
   selectedShipPrice = false;
-  totalPrice;
+  totalPrice: number;
 
   constructor(private cartService: CartService,
               private formBuilder: FormBuilder) {
@@ -98,6 +98,14 @@ export class CartComponent implements OnInit {
     this.products = this.cartService.clearCart();
     this.checkoutForm.reset();
     this.totalPrice = 0;
+  }
+
+  removeItem(product) {
+    const index = this.products.indexOf(product);
+    this.products.splice(index, 1);
+    this.getProductPrice();
+    this.selectedShipPrice = false;
+    console.log(product.name, 'was removed from cart');
   }
 
   getLocalStorageData(): void {
