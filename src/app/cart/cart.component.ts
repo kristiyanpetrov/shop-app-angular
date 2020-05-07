@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
   checkoutForm: FormGroup;
   totalPhonePrice: number = 0;
   submitted: boolean = false;
-  shippingPrices = {};
+  shippingPrices: any;
   selectedDelivery: any;
   selectedShipPrice = false;
   totalPrice: number;
@@ -98,6 +98,14 @@ export class CartComponent implements OnInit {
     this.products = this.cartService.clearCart();
     this.checkoutForm.reset();
     this.totalPrice = 0;
+  }
+
+  removeItem(product) {
+    const index = this.products.indexOf(product);
+    this.products.splice(index, 1);
+    this.getProductPrice();
+    this.selectedShipPrice = false;
+    console.log(product.name, 'was removed from cart');
   }
 
   getLocalStorageData(): void {

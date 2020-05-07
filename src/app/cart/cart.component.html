@@ -100,10 +100,12 @@
                 </h5>
                 <p class="cartProduct" *ngFor="let product of products">
                   <span>{{ product.name }}</span>
+                  <span class="ml-3" (click)="removeItem(product)">X</span>
                   <span class="float-right">{{ product.price | currency }}</span>
                 </p>
+                <hr>
                 <!--Select shipping price section-->
-                <div class="form-group" *ngIf="products.length >= 1">
+                <div class="form-group">
                   <p>Delivery options</p>
                   <select class="form-control form-control-sm" [(ngModel)]="selectedDelivery"
                           (change)="selectedDeliveryPrice()" [ngModelOptions]="{standalone: true}">
