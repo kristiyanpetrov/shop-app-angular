@@ -11,11 +11,12 @@ export class ProductListComponent implements OnInit {
   // products = products;
   products: Array<Products> = products;
   config: any;
+  searchField: string;
 
   constructor() {
     this.config = {
       itemsPerPage: 6,
-      currentPage: 1,
+      currentPage: 1
     };
   }
 
@@ -25,5 +26,4 @@ export class ProductListComponent implements OnInit {
   pageChanged(event) {
     this.config.currentPage = event;
   }
-
 }

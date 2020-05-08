@@ -3,3 +3,19 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+.search {
+  max-width: 400px;
+  padding-bottom: 40px;
+  margin: auto;
+}
+
+.form-control {
+  margin-top: 10px;
+  box-shadow: 0 5px 50px 0 #B0C1D9;
+}
+
+.form-control::placeholder {
+  font-family: FontAwesome;
+  color: grey;
+}
