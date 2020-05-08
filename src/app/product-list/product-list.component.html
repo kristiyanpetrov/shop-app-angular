@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 mt-5 text-center" *ngFor="let product of products, index as productId">
+    <div class="col-md-4 mt-5 text-center" *ngFor="let product of products | paginate: config, index as productId">
       <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
         <h5 style="color: black">
           {{ product.name }}
@@ -15,4 +15,5 @@
       </a>
     </div>
   </div>
+  <pagination-controls class="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
 </div>
