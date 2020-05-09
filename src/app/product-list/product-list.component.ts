@@ -8,7 +8,6 @@ import {Products} from '../_models/products.model';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  // products = products;
   products: Array<Products> = products;
   config: any;
   searchField: string;
