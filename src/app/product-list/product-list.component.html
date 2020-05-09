@@ -15,7 +15,7 @@
         <span style="font-size: 13px;"> {{ product.description }}</span>
       </p>
       <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
-        <img [src]="[product.image]" height="250px">
+        <img [src]="product.image" alt="image can't display" height="250px">
       </a>
     </div>
   </div>
