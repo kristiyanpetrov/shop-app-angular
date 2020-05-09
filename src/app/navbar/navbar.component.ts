@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../_services/cart.service';
-import {Products} from '../_models/products.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +7,11 @@ import {Products} from '../_models/products.model';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  products: Array<Products>;
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
-    this.products = this.cartService.getProducts();
   }
 
 }
