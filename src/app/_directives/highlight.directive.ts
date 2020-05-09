@@ -9,10 +9,10 @@ export class HighlightDirective {
   constructor(private el: ElementRef) {
   }
 
-  @Input('appHighlight') highlightBackground: string;
+  @Input('appHighlight') highlightColor: string;
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight('lightskyblue');
+    this.highlight('#efefef');
   }
 
   @HostListener('mouseleave') onMouseLeave() {
