@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { HighlightDirective } from './_directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
     ProductListComponent,
     ProductDetailsComponent,
     CartComponent,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
