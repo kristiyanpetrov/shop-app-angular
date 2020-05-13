@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
   selectedDelivery: any;
   selectedShipPrice = false;
   totalPrice: number;
+  filteredProduct = [];
 
   constructor(private cartService: CartService,
               private formBuilder: FormBuilder) {
@@ -70,15 +71,15 @@ export class CartComponent implements OnInit {
 
   calcShipPrice() {
     this.totalPrice = this.totalPhonePrice + this.selectedDelivery.price;
+    // assign only name and price of product obj to filteredProduct
+    this.filteredProduct = this.products.map(({name, price}) => ({name, price}));
+    console.log('check if take name and price only', this.filteredProduct);
     this.checkoutForm.patchValue({
-      product: this.products,
+      product: this.filteredProduct,
       delivery: this.selectedDelivery,
       total: this.totalPrice
     });
     console.log('check total price', this.totalPrice);
-    // remove two properties from the obj and submit just name and price of product
-    this.products.map(res => delete res.image && delete res.description);
-    console.log(this.products);
   }
 
   onSubmit(customerData) {

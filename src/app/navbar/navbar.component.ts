@@ -1,19 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {CartService} from '../_services/cart.service';
-import {Products} from '../_models/products.model';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
-  products: Array<Products>;
+export class NavbarComponent implements OnInit, DoCheck {
+  products = [];
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
+  }
+
+  ngDoCheck(): void {
     this.products = this.cartService.getProducts();
   }
 
