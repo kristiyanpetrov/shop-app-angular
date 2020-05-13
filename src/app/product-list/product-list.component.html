@@ -6,17 +6,12 @@
     <div class="col-md-4 mt-5 text-center" [appHighlight]
          *ngFor="let product of products | paginate: config | filter: searchField,  index as productId">
       <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
-        <h5 style="color: black">
-          {{ product.name }}
-        </h5>
+        <img [src]="product.image[0].path" alt="image can't display" height="250px">
+        <p class="mt-5" style="color: black">
+          <b>{{ product.name }}</b>
+        </p>
       </a>
-
-      <p *ngIf="product.description">
-        <span style="font-size: 13px;"> {{ product.description }}</span>
-      </p>
-      <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
-        <img [src]="product.image" alt="image can't display" height="250px">
-      </a>
+      <span style="font-size: 20px;"> {{ product.price | currency }}</span>
     </div>
   </div>
   <pagination-controls class="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
