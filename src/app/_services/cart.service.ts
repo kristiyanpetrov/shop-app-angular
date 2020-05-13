@@ -22,6 +22,10 @@ export class CartService {
     return this.http.get('/assets/shipping.json');
   }
 
+  getMemorySize() {
+    return this.http.get('/assets/memorySize.json');
+  }
+
   clearCart() {
     this.products = [];
     return this.products;

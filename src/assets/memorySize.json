@@ -1,5 +1,11 @@
 [
   {
-    "memorySize": "jo"
+    "size": 128
+  },
+  {
+    "size": 256
+  },
+  {
+    "size": 512
   }
 ]
