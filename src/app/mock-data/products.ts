@@ -9,6 +9,17 @@ export const products = [
     futures: 'Face ID for secure authentication and Apple Pay',
     processor: 'A13 Bionic chip with third-generation Neural Engine',
     charging: 'Fast charge with 18W adapter included',
+    memory: [
+      {
+        size: 128
+      },
+      {
+        size: 256
+      },
+      {
+        size: 512
+      }
+    ],
     image: [
       {
         color: 'silver',
@@ -33,7 +44,7 @@ export const products = [
     ]
   },
   {
-    name: 'iPhone 11 Max',
+    name: 'iPhone 11 Pro Max',
     price: 1568,
     display: '5.8-inch Super Retina XDR OLED display',
     waterResistant: 'Water and dust resistant (4 metres for up to 30 minutes, IP68)',
@@ -42,6 +53,17 @@ export const products = [
     futures: 'Face ID for secure authentication and Apple Pay',
     processor: 'A13 Bionic chip with third-generation Neural Engine',
     charging: 'Fast charge with 18W adapter included',
+    memory: [
+      {
+        size: 128
+      },
+      {
+        size: 256
+      },
+      {
+        size: 512
+      }
+    ],
     image: [
       {
         color: 'grey',
@@ -75,6 +97,17 @@ export const products = [
     futures: 'Face ID for secure authentication and Apple Pay',
     processor: 'A13 Bionic chip with third-generation Neural Engine',
     charging: 'Fast charge with 18W adapter included',
+    memory: [
+      {
+        size: 64
+      },
+      {
+        size: 128
+      },
+      {
+        size: 256
+      }
+    ],
     image: [
       {
         phoneColor: 'Yellow',
@@ -108,6 +141,17 @@ export const products = [
     futures: 'Face ID for secure authentication and Apple Pay',
     processor: 'A13 Bionic chip with third-generation Neural Engine',
     charging: 'Fast charge with 18W adapter included',
+    memory: [
+      {
+        size: 128
+      },
+      {
+        size: 256
+      },
+      {
+        size: 512
+      }
+    ],
     image: [
       {
         phoneColor: 'White',
@@ -141,6 +185,17 @@ export const products = [
     futures: 'Face ID for secure authentication and Apple Pay',
     processor: 'A13 Bionic chip with third-generation Neural Engine',
     charging: 'Fast charge with 18W adapter included',
+    memory: [
+      {
+        size: 128
+      },
+      {
+        size: 256
+      },
+      {
+        size: 512
+      }
+    ],
     image: [
       {
         phoneColor: 'Pink',
@@ -159,8 +214,47 @@ export const products = [
       }
     ]
   },
+  // {
+  //   name: 'iPhone XS',
+  //   price: 920,
+  //   display: '5.8-inch Super Retina XDR OLED display',
+  //   waterResistant: 'Water and dust resistant (4 metres for up to 30 minutes, IP68)',
+  //   camera: 'Triple-camera system with 12MP Ultra Wide, Wide, and Telephoto cameras; Night mode, Portrait mode, and 4K video up to 60fps',
+  //   frontCamera: '12MP TrueDepth front camera with Portrait mode, 4K video, and Slo-Mo',
+  //   futures: 'Face ID for secure authentication and Apple Pay',
+  //   processor: 'A13 Bionic chip with third-generation Neural Engine',
+  //   charging: 'Fast charge with 18W adapter included',
+  //   memory: [
+  //     {
+  //       size: 64
+  //     },
+  //     {
+  //       size: 128
+  //     },
+  //     {
+  //       size: 256
+  //     }
+  //   ],
+  //   image: [
+  //     {
+  //       phoneColor: 'Gold',
+  //       color: 'palegoldenrod',
+  //       path: '../assets/img/xs/xsgold.jpg'
+  //     },
+  //     {
+  //       phoneColor: 'Black',
+  //       color: 'black',
+  //       path: '../assets/img/xs/xsblack.jpg'
+  //     },
+  //     {
+  //       phoneColor: 'White',
+  //       color: 'white',
+  //       path: '../assets/img/xs/xswhite.jpg'
+  //     },
+  //   ]
+  // },
   {
-    name: 'iPhone XS',
+    name: 'Huawei P30 Pro',
     price: 920,
     display: '5.8-inch Super Retina XDR OLED display',
     waterResistant: 'Water and dust resistant (4 metres for up to 30 minutes, IP68)',
@@ -169,21 +263,29 @@ export const products = [
     futures: 'Face ID for secure authentication and Apple Pay',
     processor: 'A13 Bionic chip with third-generation Neural Engine',
     charging: 'Fast charge with 18W adapter included',
+    memory: [
+      {
+        size: 256
+      },
+      {
+        size: 512
+      }
+    ],
     image: [
       {
-        phoneColor: 'Gold',
-        color: 'palegoldenrod',
-        path: '../assets/img/xs/xsgold.jpg'
+        phoneColor: 'Amber Sunrise',
+        color: 'linear-gradient(to top, #ae0e18, #c34012, #d46508, #e28903, #ebac12)',
+        path: '../assets/img/p30/ambersunrise.jpg'
       },
       {
         phoneColor: 'Black',
         color: 'black',
-        path: '../assets/img/xs/xsblack.jpg'
+        path: '../assets/img/p30/black.jpg'
       },
       {
-        phoneColor: 'White',
-        color: 'white',
-        path: '../assets/img/xs/xswhite.jpg'
+        phoneColor: 'Aurora',
+        color: 'linear-gradient(to top, #0e49ae, #005eb0, #006ca3, #007690, #0e7d7f)',
+        path: '../assets/img/p30/aurora.jpg'
       },
     ]
   },
