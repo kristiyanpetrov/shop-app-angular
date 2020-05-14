@@ -12,8 +12,9 @@ import {Products} from '../_models/products.model';
 export class ProductDetailsComponent implements OnInit {
   product: any;
   memorySize: any = [];
-  selectedMemory: string;
+  selectedMemory = [];
   img: string;
+  selectedColor: string;
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute) {
@@ -23,10 +24,16 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(data => {
       this.product = products[+data.get('productId')];
     });
-    this.getPhoneMemory();
+    // this.getPhoneMemory();
     this.img = this.product.image[0].path;
+    this.selectedColor = this.product.image[0].phoneColor;
+    this.selectedMemory = this.product.memory[0].size;
   }
 
+  selectedPhoneColor(data) {
+    this.img = data.path;
+    this.selectedColor = data.phoneColor;
+  }
 
   getPhoneMemory() {
     this.cartService.getMemorySize().subscribe((data) => {
@@ -39,7 +46,7 @@ export class ProductDetailsComponent implements OnInit {
     window.alert('Your product has been added to the cart!');
   }
 
-  check(data) {
+  selectPhoneMemory(data) {
     this.selectedMemory = data;
     console.log('this.selectedMemory', data);
   }
