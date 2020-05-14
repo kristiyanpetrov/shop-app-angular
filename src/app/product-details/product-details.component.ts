@@ -10,7 +10,12 @@ import {Products} from '../_models/products.model';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  product: Products;
+  product: any;
+  memorySize: any = [];
+  selectedMemory = [];
+  img: string;
+  selectedColor: string;
+  selectedPrice: number;
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute) {
@@ -20,10 +25,31 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(data => {
       this.product = products[+data.get('productId')];
     });
+
+    this.defaultPhoneConfiguration();
+  }
+
+  defaultPhoneConfiguration() {
+    this.img = this.product.image[0].path;
+    this.selectedColor = this.product.image[0].phoneColor;
+    this.selectedMemory = this.product.memory[0].size;
+    this.selectedPrice = this.product.memory[0].price;
+  }
+
+  selectedPhoneColor(data) {
+    this.img = data.path;
+    this.selectedColor = data.phoneColor;
   }
 
   addToCart(product) {
     this.cartService.addToCart(product);
     window.alert('Your product has been added to the cart!');
   }
+
+  selectPhoneMemory(data) {
+    this.selectedMemory = data.size;
+    // we change price when memory size is changed
+    this.selectedPrice = data.price;
+  }
+
 }
