@@ -1,8 +1,28 @@
-.product {
-  .description {
-    font-size: 13px;
+.title-description {
+  font-size: 13px;
+}
+
+ul {
+  font-size: 13px;
+  list-style-position: outside;
+
+  li {
+    margin-left: -24px !important;
   }
-  img {
-    height: 250px;
-  }
+}
+
+.gold {
+  background-color: palegoldenrod;
+}
+
+.darkslategrey {
+  background-color: darkslategrey;
+}
+
+.grey {
+  background-color: grey;
+}
+
+.silver {
+  background-color: silver;
 }

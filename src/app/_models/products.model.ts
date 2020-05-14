@@ -1,6 +1,12 @@
 export interface Products {
   name: string;
   price: number;
-  description: string;
-  image: string;
+  display: string;
+  waterResistant: string;
+  camera: string;
+  frontCamera: string;
+  futures: string;
+  processor: string;
+  charging: string;
+
 }
