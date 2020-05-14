@@ -11,13 +11,16 @@ export const products = [
     charging: 'Fast charge with 18W adapter included',
     memory: [
       {
-        size: 128
+        size: 128,
+        price: 1180
       },
       {
-        size: 256
+        size: 256,
+        price: 1250
       },
       {
-        size: 512
+        size: 512,
+        price: 1310
       }
     ],
     image: [
@@ -33,7 +36,7 @@ export const products = [
       },
       {
         color: 'grey',
-        phoneColor: 'Midnight',
+        phoneColor: 'Midnight Green',
         path: '../assets/img/11pro/11midnight.jpg',
       },
       {
@@ -55,13 +58,16 @@ export const products = [
     charging: 'Fast charge with 18W adapter included',
     memory: [
       {
-        size: 128
+        size: 128,
+        price: 1380
       },
       {
-        size: 256
+        size: 256,
+        price: 1450
       },
       {
-        size: 512
+        size: 512,
+        price: 1568
       }
     ],
     image: [
@@ -99,13 +105,16 @@ export const products = [
     charging: 'Fast charge with 18W adapter included',
     memory: [
       {
-        size: 64
+        size: 64,
+        price: 970
       },
       {
-        size: 128
+        size: 128,
+        price: 1050
       },
       {
-        size: 256
+        size: 256,
+        price: 1180
       }
     ],
     image: [
@@ -143,13 +152,16 @@ export const products = [
     charging: 'Fast charge with 18W adapter included',
     memory: [
       {
-        size: 128
+        size: 128,
+        price: 1040
       },
       {
-        size: 256
+        size: 256,
+        price: 1100
       },
       {
-        size: 512
+        size: 512,
+        price: 1180
       }
     ],
     image: [
@@ -187,13 +199,16 @@ export const products = [
     charging: 'Fast charge with 18W adapter included',
     memory: [
       {
-        size: 128
+        size: 128,
+        price: 1300
       },
       {
-        size: 256
+        size: 256,
+        price: 1370
       },
       {
-        size: 512
+        size: 512,
+        price: 1480
       }
     ],
     image: [
@@ -265,10 +280,12 @@ export const products = [
     charging: 'Fast charge with 18W adapter included',
     memory: [
       {
-        size: 256
+        size: 256,
+        price: 920
       },
       {
-        size: 512
+        size: 512,
+        price: 1130
       }
     ],
     image: [

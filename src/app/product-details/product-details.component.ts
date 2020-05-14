@@ -15,6 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   selectedMemory = [];
   img: string;
   selectedColor: string;
+  selectedPrice: number;
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute) {
@@ -24,21 +25,20 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(data => {
       this.product = products[+data.get('productId')];
     });
-    // this.getPhoneMemory();
+
+    this.defaultPhoneConfiguration();
+  }
+
+  defaultPhoneConfiguration() {
     this.img = this.product.image[0].path;
     this.selectedColor = this.product.image[0].phoneColor;
     this.selectedMemory = this.product.memory[0].size;
+    this.selectedPrice = this.product.memory[0].price;
   }
 
   selectedPhoneColor(data) {
     this.img = data.path;
     this.selectedColor = data.phoneColor;
-  }
-
-  getPhoneMemory() {
-    this.cartService.getMemorySize().subscribe((data) => {
-      this.memorySize = Object.values(data);
-    });
   }
 
   addToCart(product) {
@@ -47,8 +47,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectPhoneMemory(data) {
-    this.selectedMemory = data;
-    console.log('this.selectedMemory', data);
+    this.selectedMemory = data.size;
+    // we change price when memory size is changed
+    this.selectedPrice = data.price;
   }
 
 }

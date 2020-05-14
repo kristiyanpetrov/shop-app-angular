@@ -11,7 +11,7 @@
           <b>{{ product.name }}</b>
         </p>
       </a>
-      <span style="font-size: 20px;"> {{ product.price | currency }}</span>
+      <span style="font-size: 20px;"> {{ product.memory[0].price | currency }}</span>
     </div>
   </div>
   <pagination-controls class="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
