@@ -11,11 +11,11 @@ import {Products} from '../_models/products.model';
 })
 export class ProductDetailsComponent implements OnInit {
   product: any;
-  memorySize: any = [];
   selectedMemory = [];
   img: string;
   selectedColor: string;
   selectedPrice: number;
+  sideImages = [];
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute) {
@@ -25,20 +25,26 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(data => {
       this.product = products[+data.get('productId')];
     });
-
     this.defaultPhoneConfiguration();
   }
 
+  sideImage(images) {
+    this.img = images;
+  }
+
   defaultPhoneConfiguration() {
-    this.img = this.product.image[0].path;
+    // this method is used to take specific data with index 0 by default, as we execute it in ngOnInit
+    this.img = this.product.image[0].path[0].img;
     this.selectedColor = this.product.image[0].phoneColor;
     this.selectedMemory = this.product.memory[0].size;
     this.selectedPrice = this.product.memory[0].price;
+    this.sideImages = this.product.image[0].path;
   }
 
   selectedPhoneColor(data) {
-    this.img = data.path;
+    this.img = data.path[0].img;
     this.selectedColor = data.phoneColor;
+    this.sideImages = data.path;
   }
 
   addToCart(product) {
