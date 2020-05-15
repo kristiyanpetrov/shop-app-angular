@@ -11,7 +11,6 @@ import {Products} from '../_models/products.model';
 })
 export class ProductDetailsComponent implements OnInit {
   product: any;
-  memorySize: any = [];
   selectedMemory = [];
   img: string;
   selectedColor: string;
@@ -44,10 +43,8 @@ export class ProductDetailsComponent implements OnInit {
 
   selectedPhoneColor(data) {
     this.img = data.path[0].img;
-    console.log('this.img when select phone color', this.img);
     this.selectedColor = data.phoneColor;
     this.sideImages = data.path;
-    console.log('this.sideImages', this.sideImages);
   }
 
   addToCart(product) {
