@@ -3,8 +3,8 @@
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
       <div class="row">
         <!--Billing section-->
-        <div class="col-4">
-          <h3>Billing Address</h3>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <h4>Billing Address</h4>
           <label for="fullName"><i class="fa fa-user"></i> Full Name</label>
           <div>
             <input type="text" id="fullName" placeholder="John B. Williams" formControlName="fullName">
@@ -21,13 +21,13 @@
               <input type="text" id="adr" name="address" placeholder="88 Victoria St" formControlName="address">
             </div>
             <div class="row">
-              <div class="col-6">
+              <div class="col-sm-6">
                 <label for="city"><i class="fa fa-building"></i> City</label>
                 <div>
                   <input type="text" id="city" name="city" placeholder="London" formControlName="city">
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6">
                 <label for="country"><i class="fa fa-globe"></i> Country</label>
                 <div>
                   <input type="text" id="country" name="country" placeholder="United Kingdom" formControlName="country">
@@ -35,11 +35,11 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-6">
+              <div class="col-sm-6">
                 <label for="state"><i class="fa fa-institution"></i> County</label>
                 <input type="text" id="state" name="state" placeholder="Middlesex" formControlName="county">
               </div>
-              <div class="col-6">
+              <div class="col-sm-6">
                 <label for="postcode"><i class="fa fa-location-arrow"></i> Post Code</label>
                 <input type="text" id="postcode" name="postcode" placeholder="SW1" formControlName="postCode">
               </div>
@@ -48,8 +48,8 @@
         </div>
         <!--END Billing section-->
         <!--Payment section-->
-        <div formGroupName="paymentDetails" class="col-4">
-          <h3>Payment</h3>
+        <div formGroupName="paymentDetails" class="col-sm-6 col-md-4 col-lg-4">
+          <h4>Payment</h4>
           <label>Accepted Cards</label>
           <div class="icon-container">
             <i class="fa fa-cc-visa"></i>
@@ -84,7 +84,7 @@
         </div>
         <!--END Payment section-->
         <!--Cart section-->
-        <div class="col-3">
+        <div class="col-md-4 col-lg-3">
           <div class="card">
             <div class="card-body cart">
               <div class="emptyCart" *ngIf="products.length === 0">
@@ -135,7 +135,7 @@
         </div>
         <!--END Cart section-->
       </div>
-      <button class="btn btn-success" type="submit"
+      <button class="btn btn-success col-sm-12 col-md-3 col-lg-2" type="submit"
               [disabled]="checkoutForm.invalid || products.length === 0 || !selectedShipPrice">
         Purchase
       </button>

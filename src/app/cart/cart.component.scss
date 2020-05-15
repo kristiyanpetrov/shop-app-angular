@@ -1,5 +1,5 @@
 .icon-container {
-  padding: 9px 0;
+  padding: 8px 0;
   font-size: 30px;
 
   .fa-cc-visa {
@@ -25,7 +25,7 @@ input[type=text] {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 p {
@@ -48,4 +48,12 @@ p {
       font-size: 18px;
     }
   }
+}
+
+label, input {
+  font-size: 14px;
+}
+
+.col-sm-12 {
+  margin-top: 5px;
 }
