@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../_services/cart.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-cart',
@@ -83,22 +84,31 @@ export class CartComponent implements OnInit {
   }
 
   onSubmit(customerData) {
-    this.submitted = true;
-    // stop if form is invalid or show alert Success
-    if (this.checkoutForm.invalid) {
-      alert('Please fill out correct all fields!');
-      return;
-    } else {
-      alert('Your order has been submitted!');
-      console.warn('Your order has been submitted', customerData);
-    }
+    Swal.fire({
+      title: 'Are you sure you want to finish the order?',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((item) => {
+      if (item.value) {
+        this.submitted = true;
+        // reset form and cart when submitted
+        this.products = this.cartService.clearCart();
+        this.checkoutForm.reset();
+        this.totalPrice = 0;
+        Swal.fire(
+          'Payment successful!',
+          '',
+          'success'
+        );
+      } else if (item.dismiss) {
+      }
+    });
+    console.warn('Your order has been submitted', customerData);
     // send submitted data to localStorage
     localStorage.setItem('dataStorage', JSON.stringify(customerData));
-
-    // reset the form and the cart price when submitted
-    this.products = this.cartService.clearCart();
-    this.checkoutForm.reset();
-    this.totalPrice = 0;
   }
 
   removeItem(product) {
