@@ -3,6 +3,7 @@ import {CartService} from '../_services/cart.service';
 import {ActivatedRoute} from '@angular/router';
 import {products} from '../mock-data/products';
 import {Products} from '../_models/products.model';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-product-details',
@@ -48,8 +49,29 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product) {
-    this.cartService.addToCart(product);
-    window.alert('Your product has been added to the cart!');
+    Swal.fire({
+      title: 'Add to cart?',
+      text: product.name,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((item) => {
+      if (item.value) {
+        this.cartService.addToCart(product);
+        Swal.fire(
+          'Added successfully!',
+          '',
+          'success'
+        );
+      } else if (item.dismiss) {
+        Swal.fire(
+          'Cancelled',
+          '',
+          'error'
+        );
+      }
+    });
   }
 
   selectPhoneMemory(data) {
@@ -58,4 +80,41 @@ export class ProductDetailsComponent implements OnInit {
     this.selectedPrice = data.price;
   }
 
+  // opensweetalert() {
+  //   Swal.fire({
+  //     text: 'Hello!',
+  //     icon: 'success'
+  //   });
+  // }
+
+  opensweetalertdng() {
+    Swal.fire('Oops...', 'Something went wrong!', 'error');
+  }
+
+  opensweetalertcst() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        );
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        );
+      }
+    });
+  }
 }
