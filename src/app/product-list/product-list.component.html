@@ -6,7 +6,7 @@
     <div class="col-md-4 mt-5 text-center" [appHighlight]
          *ngFor="let product of products | paginate: config | filter: searchField,  index as productId">
       <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
-        <img [src]="product.image[0].path" alt="image can't display" height="250px">
+        <img [src]="product.image[0].path[0].img" alt="image can't display" height="250px">
         <p class="mt-5" style="color: black">
           <b>{{ product.name }}</b>
         </p>
