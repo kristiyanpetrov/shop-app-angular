@@ -3,7 +3,7 @@
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
       <div class="row">
         <!--Billing section-->
-        <div class="col-sm-6 col-md-4 col-lg-4">
+        <div class="col-sm-6 col-md-6 col-lg-4">
           <h4>Billing Address</h4>
           <label for="fullName"><i class="fa fa-user"></i> Full Name</label>
           <div>
@@ -48,7 +48,7 @@
         </div>
         <!--END Billing section-->
         <!--Payment section-->
-        <div formGroupName="paymentDetails" class="col-sm-6 col-md-4 col-lg-4">
+        <div formGroupName="paymentDetails" class="col-sm-6 col-md-6 col-lg-4">
           <h4>Payment</h4>
           <label>Accepted Cards</label>
           <div class="icon-container">
@@ -84,7 +84,7 @@
         </div>
         <!--END Payment section-->
         <!--Cart section-->
-        <div class="col-md-4 col-lg-3">
+        <div class="col-md-6 col-lg-4">
           <div class="card">
             <div class="card-body cart">
               <div class="emptyCart" *ngIf="products.length === 0">
@@ -104,31 +104,33 @@
                     <i class="fa fa-shopping-cart"></i>
                   </span>
                 </h5>
-                <p class="cartProduct" *ngFor="let product of products">
-                  <i class="fa fa-trash-o text-danger" (click)="removeItem(product)"></i>
-                  <span class="ml-2">{{ product.name }}</span>
-                  <span class="float-right">{{ product.price | currency }}</span>
-                </p>
-                <hr>
-                <!--Select shipping price section-->
-                <div class="form-group">
-                  <p>Delivery options</p>
-                  <select class="form-control form-control-sm" [(ngModel)]="selectedDelivery"
-                          (change)="selectedDeliveryPrice()" [ngModelOptions]="{standalone: true}">
-                    <option disabled>Select Delivery</option>
-                    <option *ngFor="let shippingPrice of shippingPrices" [ngValue]="shippingPrice">
-                      {{ shippingPrice.type }} - {{ shippingPrice.price }}
-                    </option>
-                  </select>
+                <div class="text-size">
+                  <p class="cartProduct" *ngFor="let product of products">
+                    <i class="fa fa-trash-o text-danger" (click)="removeItem(product)"></i>
+                    <span class="ml-2">{{ product.name }}</span>
+                    <span class="float-right">{{ product.price | currency }}</span>
+                  </p>
+                  <hr>
+                  <!--Select shipping price section-->
+                  <div class="form-group">
+                    <p>Delivery options</p>
+                    <select class="form-control form-control-sm" [(ngModel)]="selectedDelivery"
+                            (change)="selectedDeliveryPrice()" [ngModelOptions]="{standalone: true}">
+                      <option disabled>Select Delivery</option>
+                      <option *ngFor="let shippingPrice of shippingPrices" [ngValue]="shippingPrice">
+                        {{ shippingPrice.type }} - {{ shippingPrice.price }}
+                      </option>
+                    </select>
+                  </div>
+                  <!--END Select shipping price section-->
+                  <hr>
+                  <p *ngIf="!selectedShipPrice">
+                    <b>Total<span class="float-right">{{ totalPhonePrice | currency }}</span></b>
+                  </p>
+                  <p *ngIf="selectedShipPrice">
+                    <b>Total<span class="float-right">{{ totalPrice | currency }}</span></b>
+                  </p>
                 </div>
-                <!--END Select shipping price section-->
-                <hr>
-                <p *ngIf="!selectedShipPrice">
-                  <b>Total<span class="float-right">{{ totalPhonePrice | currency }}</span></b>
-                </p>
-                <p *ngIf="selectedShipPrice">
-                  <b>Total<span class="float-right">{{ totalPrice | currency }}</span></b>
-                </p>
               </div>
             </div>
           </div>
