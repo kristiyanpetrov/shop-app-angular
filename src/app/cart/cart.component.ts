@@ -60,7 +60,6 @@ export class CartComponent implements OnInit {
 
   getShippingDetails() {
     this.cartService.getShippingDetails().subscribe((obj) => {
-      // console.log('ship data is here', obj);
       this.shippingPrices = obj;
     });
   }
@@ -72,9 +71,10 @@ export class CartComponent implements OnInit {
 
   calcShipPrice() {
     this.totalPrice = this.totalPhonePrice + this.selectedDelivery.price;
-    // assign only name and price of product obj to filteredProduct
-    this.filteredProduct = this.products.map(({name, price}) => ({name, price}));
-    console.log('check if take name and price only', this.filteredProduct);
+    // assign name,price,memory,color of obj to filteredProduct
+    this.filteredProduct = this.products.map(({name, price, color, memorySize}) =>
+      ({name, price, color, memorySize}));
+    console.log('check if take name, price, color, memory', this.filteredProduct);
     this.checkoutForm.patchValue({
       product: this.filteredProduct,
       delivery: this.selectedDelivery,

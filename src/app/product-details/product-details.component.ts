@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../_services/cart.service';
 import {ActivatedRoute} from '@angular/router';
-import {products} from '../mock-data/products';
+import {products} from '../_mock-data/products';
 import {Products} from '../_models/products.model';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
@@ -49,16 +49,25 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product) {
+    // assign selected options to obj properties
+    product.color = this.selectedColor;
+    product.price = this.selectedPrice;
+    product.memorySize = this.selectedMemory;
+    // push new value properties in new variable then we send it in cart service
+    const newObject = Object.assign({}, product);
+
+    // create var which hold details about the phone and use it in Swal
+    const details = newObject.name + ' (' + newObject.memorySize + 'GB) - ' + newObject.color;
     Swal.fire({
       title: 'Add to cart?',
-      text: product.name,
+      text: details,
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Yes',
       cancelButtonText: 'No'
     }).then((item) => {
       if (item.value) {
-        this.cartService.addToCart(product);
+        this.cartService.addToCart(newObject);
         Swal.fire(
           'Added successfully!',
           '',
@@ -78,43 +87,5 @@ export class ProductDetailsComponent implements OnInit {
     this.selectedMemory = data.size;
     // we change price when memory size is changed
     this.selectedPrice = data.price;
-  }
-
-  // opensweetalert() {
-  //   Swal.fire({
-  //     text: 'Hello!',
-  //     icon: 'success'
-  //   });
-  // }
-
-  opensweetalertdng() {
-    Swal.fire('Oops...', 'Something went wrong!', 'error');
-  }
-
-  opensweetalertcst() {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover this imaginary file!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, keep it'
-    }).then((result) => {
-      if (result.value) {
-        Swal.fire(
-          'Deleted!',
-          'Your imaginary file has been deleted.',
-          'success'
-        );
-        // For more information about handling dismissals please visit
-        // https://sweetalert2.github.io/#handling-dismissals
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        );
-      }
-    });
   }
 }
