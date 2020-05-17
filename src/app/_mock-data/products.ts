@@ -1,7 +1,9 @@
 export const products = [
   {
     name: 'iPhone 11 Pro',
-    price: 1359,
+    price: '',
+    color: '',
+    memorySize: '',
     display: '5.8-inch Super Retina XDR OLED display',
     waterResistant: 'Water and dust resistant (4 metres for up to 30 minutes, IP68)',
     camera: 'Triple-camera system with 12MP Ultra Wide, Wide, and Telephoto cameras; Night mode, Portrait mode, and 4K video up to 60fps',

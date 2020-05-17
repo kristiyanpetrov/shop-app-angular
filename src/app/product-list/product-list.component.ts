@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {products} from '../mock-data/products';
+import {products} from '../_mock-data/products';
 import {Products} from '../_models/products.model';
 
 @Component({
@@ -8,7 +8,8 @@ import {Products} from '../_models/products.model';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  products: Array<Products> = products;
+  // products: Array<Products> = products;
+  products = products;
   config: any;
   searchField: string;
 
