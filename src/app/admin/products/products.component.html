@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="search">
+    <input class="form-control" type="text" [(ngModel)]="searchField" autocomplete="on" placeholder="&#xF002; Search">
+  </div>
+  <div class="row">
+    <div class="col-md-4 mt-5 text-center" [appHighlight]
+         *ngFor="let product of products | paginate: config | filter: searchField,  index as productId">
+      <a [title]="product.name + ' details'" [routerLink]="['/admin/product/edit', productId]">
+        <img [src]="product.image[0].path[0].img" alt="image can't display" height="250px">
+        <p class="mt-5" style="color: black">
+          <b>{{ product.name }}</b>
+        </p>
+      </a>
+      <span style="font-size: 20px;"> {{ product.memory[0].price | currency }}</span>
+    </div>
+  </div>
+  <pagination-controls class="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
+</div>

@@ -1,0 +1,127 @@
+{
+  "products": {
+    "name": "iPhone 11 Pro",
+    "price": "",
+    "color": "",
+    "memorySize": "",
+    "display": "5.8-inch Super Retina XDR OLED display",
+    "waterResistant": "Water and dust resistant (4 metres for up to 30 minutes, IP68)",
+    "camera": "Triple-camera system with 12MP Ultra Wide, Wide, and Telephoto cameras; Night mode, Portrait mode, and 4K video up to 60fps",
+    "frontCamera": "12MP TrueDepth front camera with Portrait mode, 4K video, and Slo-Mo",
+    "futures": "Face ID for secure authentication and Apple Pay",
+    "processor": "A13 Bionic chip with third-generation Neural Engine",
+    "charging": "Fast charge with 18W adapter included",
+    "memory": [
+      {
+        "size": 128,
+        "price": 1180
+      },
+      {
+        "size": 256,
+        "price": 1250
+      },
+      {
+        "size": 512,
+        "price": 1310
+      }
+    ],
+    "image": [
+      {
+        "color": "silver",
+        "phoneColor": "Silver",
+        "path": [
+          {
+            "img": "../assets/img/11pro/silver/silver.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/silver/silver1.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/silver/silver2.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/silver/silver3.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/silver/silver4.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/silver/all.jpg"
+          }
+        ]
+      },
+      {
+        "color": "darkslategrey",
+        "phoneColor": "Space Grey",
+        "path": [
+          {
+            "img": "../assets/img/11pro/space-grey/0.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/space-grey/1.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/space-grey/2.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/space-grey/3.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/space-grey/4.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/space-grey/all.jpg"
+          }
+        ]
+      },
+      {
+        "color": "grey",
+        "phoneColor": "Midnight Green",
+        "path": [
+          {
+            "img": "../assets/img/11pro/midnight/0.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/midnight/1.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/midnight/2.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/midnight/3.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/midnight/4.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/midnight/all.jpg"
+          }
+        ]
+      },
+      {
+        "color": "palegoldenrod",
+        "phoneColor": "Gold",
+        "path": [
+          {
+            "img": "../assets/img/11pro/gold/0.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/gold/1.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/gold/2.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/gold/3.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/gold/4.jpg"
+          },
+          {
+            "img": "../assets/img/11pro/gold/all.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}
