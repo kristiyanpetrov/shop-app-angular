@@ -17,29 +17,33 @@ export class ProductDetailsComponent implements OnInit {
   selectedColor: string;
   selectedPrice: number;
   sideImages = [];
+  id: number = null;
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(data => {
-      this.product = products[+data.get('productId')];
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
     });
-    this.defaultPhoneConfiguration();
+    this.getProduct();
+  }
+
+  getProduct() {
+    this.cartService.getProduct(this.id).subscribe((res: any) => {
+      this.product = res;
+      // assign first property from obj arr in var when load page
+      this.img = res.image[0].path[0].img;
+      this.sideImages = res.image[0].path;
+      this.selectedColor = res.image[0].phoneColor;
+      this.selectedMemory = res.memory[0].size;
+      this.selectedPrice = res.memory[0].price;
+    });
   }
 
   sideImage(images) {
     this.img = images;
-  }
-
-  defaultPhoneConfiguration() {
-    // this method is used to take specific data with index 0 by default, as we execute it in ngOnInit
-    this.img = this.product.image[0].path[0].img;
-    this.selectedColor = this.product.image[0].phoneColor;
-    this.selectedMemory = this.product.memory[0].size;
-    this.selectedPrice = this.product.memory[0].price;
-    this.sideImages = this.product.image[0].path;
   }
 
   selectedPhoneColor(data) {
