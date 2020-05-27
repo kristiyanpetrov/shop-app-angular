@@ -29,7 +29,6 @@ export class EditProductComponent implements OnInit, AfterViewChecked {
   sideImages = [];
   colorButton;
   editProduct: FormGroup;
-
   data = [
     {
       color: 'black'
@@ -182,8 +181,15 @@ export class EditProductComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    this.editProduct.controls['name'].setValue(this.product.name);
+    this.editProduct.controls['name'].setValue(this.product.name + 'sss');
     this.editProduct.controls['price'].setValue(this.selectedPrice);
+  }
+
+  postJson(data) {
+    let id = 1;
+    console.log('before post', data, id);
+    this.cartService.updateProduct(data, id).subscribe(() => {
+    });
   }
 
   changeNavBackground(color) {

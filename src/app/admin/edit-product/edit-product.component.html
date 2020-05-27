@@ -22,6 +22,7 @@
             <input formControlName="price">
           </div>
         </form>
+        <button (click)="postJson(editProduct.value)">post</button>
         <div class="mt-2" style="margin-left: -3px">
           <button type="button" class="btn ml-1" style="border-color: grey; font-weight: bold"
                   *ngFor="let sizeMemory of product.memory"
