@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CartService {
   products = [];
+  backendUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
   }
@@ -15,7 +16,18 @@ export class CartService {
   }
 
   getProducts() {
-    return this.products;
+    const url = '/products';
+    return this.http.get(url)
+  }
+
+  getProduct(id: number) {
+    const url = '/products/' + id;
+    return this.http.get(url);
+  }
+
+  updateProduct(data, id) {
+    const url = '/products/' + id;
+    return this.http.put(url, data);
   }
 
   getShippingDetails() {
