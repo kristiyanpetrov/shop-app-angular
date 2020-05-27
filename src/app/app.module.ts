@@ -13,6 +13,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { HighlightDirective } from './_directives/highlight.directive';
+import { AdminComponent } from './admin/admin.component';
+import { ProductsComponent } from './admin/products/products.component';
+import { EditProductComponent } from './admin/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { HighlightDirective } from './_directives/highlight.directive';
     ProductDetailsComponent,
     CartComponent,
     HighlightDirective,
+    AdminComponent,
+    ProductsComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
