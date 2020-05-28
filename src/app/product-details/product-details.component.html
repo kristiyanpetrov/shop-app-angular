@@ -10,7 +10,7 @@
         <img class="img-fluid" [src]="img">
       </div>
       <div class="mt-3 col-md-8 col-lg-7">
-        <h5>{{ product.name }} ({{selectedMemory}}GB) - {{selectedColor}}</h5>
+        <h5>{{ product?.name }} ({{selectedMemory}}GB) - {{selectedColor}}</h5>
         <div class="mt-4">
           <span class="title-description">Price:</span>
           <span style="font-size: 16px; color: darkred"> {{ selectedPrice | currency }}</span>
@@ -21,7 +21,7 @@
         </div>
         <div class="mt-2" style="margin-left: -3px">
           <button type="button" class="btn ml-1" style="border-color: grey; font-weight: bold"
-                  *ngFor="let sizeMemory of product.memory"
+                  *ngFor="let sizeMemory of product?.memory"
                   (click)="selectPhoneMemory(sizeMemory)">{{sizeMemory.size}}GB
           </button>
         </div>
@@ -29,7 +29,7 @@
           <span class="title-description">Selected color: <b>{{this.selectedColor}}</b></span>
         </div>
         <div>
-          <button *ngFor="let data of product.image" class="card ml-1"
+          <button *ngFor="let data of product?.image" class="card ml-1"
                   style="height: 30px; width: 30px; display: inline-block"
                   [ngStyle]="{'background': data.color}"
                   [title]="data.phoneColor"
@@ -39,13 +39,13 @@
         <div>
           <span class="title-description">Specification:</span>
           <ul class="description">
-            <li>{{ product.display }}</li>
-            <li>{{ product.waterResistant }}</li>
-            <li>{{ product.camera }}</li>
-            <li>{{ product.frontCamera }}</li>
-            <li>{{ product.futures }}</li>
-            <li>{{ product.processor }}</li>
-            <li>{{ product.charging }}</li>
+            <li>{{ product?.display }}</li>
+            <li>{{ product?.waterResistant }}</li>
+            <li>{{ product?.camera }}</li>
+            <li>{{ product?.frontCamera }}</li>
+            <li>{{ product?.futures }}</li>
+            <li>{{ product?.processor }}</li>
+            <li>{{ product?.charging }}</li>
           </ul>
           <div class="mt-2">
             <button class="btn btn-success" [disabled]="!selectedMemory" (click)="addToCart(product)">
