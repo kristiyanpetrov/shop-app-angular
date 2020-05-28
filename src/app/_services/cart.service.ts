@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   products = [];
-  backendUrl = 'http://localhost:3000';
+  backendUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
   }
@@ -16,17 +17,17 @@ export class CartService {
   }
 
   getProducts() {
-    const url = '/products';
+    const url = this.backendUrl + '/products';
     return this.http.get(url)
   }
 
   getProduct(id: number) {
-    const url = '/products/' + id;
+    const url = this.backendUrl + '/products/' + id;
     return this.http.get(url);
   }
 
   updateProduct(data, id) {
-    const url = '/products/' + id;
+    const url = this.backendUrl + '/products/' + id;
     return this.http.put(url, data);
   }
 
