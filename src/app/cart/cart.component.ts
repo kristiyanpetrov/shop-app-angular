@@ -9,7 +9,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  products = [];
+  products;
   checkoutForm: FormGroup;
   totalPhonePrice: number = 0;
   submitted: boolean = false;
@@ -51,8 +51,8 @@ export class CartComponent implements OnInit {
   }
 
   getProductPrice() {
-    this.products = this.cartService.getProducts();
-    // take the price from obj and calculate it
+    this.products = this.cartService.products;
+    // take the price from obj and calculate total price of devices
     this.totalPhonePrice = this.products.map(key => {
       return key.price;
     }).reduce((a, b) => a + b, 0);
@@ -74,7 +74,6 @@ export class CartComponent implements OnInit {
     // assign name,price,memory,color of obj to filteredProduct
     this.filteredProduct = this.products.map(({name, price, color, memorySize}) =>
       ({name, price, color, memorySize}));
-    console.log('check if take name, price, color, memory', this.filteredProduct);
     this.checkoutForm.patchValue({
       product: this.filteredProduct,
       delivery: this.selectedDelivery,
