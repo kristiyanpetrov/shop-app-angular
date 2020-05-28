@@ -1,0 +1,42 @@
+.title-description {
+  font-size: 13px;
+}
+
+.middle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 65px;
+}
+
+.img-fluid {
+  max-height: 450px;
+  display: block;
+  margin: auto;
+  vertical-align: middle;
+}
+
+ul {
+  font-size: 13px;
+  list-style-position: outside;
+
+  li {
+    margin-left: -24px !important;
+  }
+}
+
+.gold {
+  background-color: palegoldenrod;
+}
+
+.darkslategrey {
+  background-color: darkslategrey;
+}
+
+.grey {
+  background-color: grey;
+}
+
+.silver {
+  background-color: silver;
+}
