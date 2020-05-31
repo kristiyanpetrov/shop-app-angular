@@ -14,18 +14,20 @@
       <div class="mt-3 col-md-8 col-lg-7">
         <form [formGroup]="editProduct">
           <b>Name: </b>
+          <i>{{product?.name}}</i>
           <div>
-            <input formControlName="name">
+            <input formControlName="name" placeholder="Product name">
           </div>
           <b>Price: </b>
+          <i>{{selectedPrice | currency}}</i>
           <div>
-            <input formControlName="price">
+            <input formControlName="price" placeholder="Product price">
           </div>
         </form>
         <button (click)="postJson(editProduct.value)">post</button>
         <div class="mt-2" style="margin-left: -3px">
           <button type="button" class="btn ml-1" style="border-color: grey; font-weight: bold"
-                  *ngFor="let sizeMemory of product.memory"
+                  *ngFor="let sizeMemory of product?.memory"
                   (click)="selectPhoneMemory(sizeMemory)">{{sizeMemory.size}}GB
           </button>
         </div>
@@ -33,7 +35,7 @@
           <span class="title-description">Selected color: <b>{{this.selectedColor}}</b></span>
         </div>
         <div>
-          <button *ngFor="let data of product.image" class="card ml-1"
+          <button *ngFor="let data of product?.image" class="card ml-1"
                   style="height: 30px; width: 30px; display: inline-block"
                   [ngStyle]="{'background': data.color}"
                   [title]="data.phoneColor"
@@ -43,13 +45,13 @@
         <div>
           <span class="title-description">Specification:</span>
           <ul class="description">
-            <li>{{ product.display }}</li>
-            <li>{{ product.waterResistant }}</li>
-            <li>{{ product.camera }}</li>
-            <li>{{ product.frontCamera }}</li>
-            <li>{{ product.futures }}</li>
-            <li>{{ product.processor }}</li>
-            <li>{{ product.charging }}</li>
+            <li>{{ product?.display }}</li>
+            <li>{{ product?.waterResistant }}</li>
+            <li>{{ product?.camera }}</li>
+            <li>{{ product?.frontCamera }}</li>
+            <li>{{ product?.futures }}</li>
+            <li>{{ product?.processor }}</li>
+            <li>{{ product?.charging }}</li>
           </ul>
         </div>
       </div>
