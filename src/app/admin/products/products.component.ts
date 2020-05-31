@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {products} from '../../_mock-data/products';
 import {CartService} from '../../_services/cart.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,8 @@ export class ProductsComponent implements OnInit {
   config: any;
   searchField: string;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private route: Router) {
     this.config = {
       itemsPerPage: 6,
       currentPage: 1
@@ -31,5 +33,9 @@ export class ProductsComponent implements OnInit {
     this.cartService.getProducts().subscribe(data => {
       this.products = data;
     });
+  }
+
+  goToProductId(id) {
+    this.route.navigate(['/admin/products/edit/' + id]);
   }
 }
