@@ -27,7 +27,7 @@ export class EditProductComponent implements OnInit, AfterViewChecked {
   selectedColor: string;
   selectedPrice: number;
   sideImages = [];
-  colorButton;
+  id: number = null;
   editProduct: FormGroup;
   data = [
     {
@@ -48,145 +48,157 @@ export class EditProductComponent implements OnInit, AfterViewChecked {
     this.editProduct = this.fb.group({
       name: '',
       price: '',
-      // color: '',
-      // memorySize: '',
-      // display: '',
-      // waterResistant: '',
-      // camera: '',
-      // frontCamera: '',
-      // futures: '',
-      // processor: '',
-      // charging: '',
-      // memory: this.fb.group([
-      //   {
-      //     size: '',
-      //     price: ''
-      //   },
-      //   {
-      //     size: '',
-      //     price: ''
-      //   },
-      //   {
-      //     size: '',
-      //     price: ''
-      //   }
-      // ]),
-      // image: [
-      //   {
-      //     color: 'silver',
-      //     phoneColor: 'Silver',
-      //     path: [
-      //       {
-      //         img: '../assets/img/11pro/silver/silver.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/silver/silver1.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/silver/silver2.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/silver/silver3.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/silver/silver4.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/silver/all.jpg'
-      //       }
-      //     ],
-      //   },
-      //   {
-      //     color: 'darkslategrey',
-      //     phoneColor: 'Space Grey',
-      //     path: [
-      //       {
-      //         img: '../assets/img/11pro/space-grey/0.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/space-grey/1.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/space-grey/2.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/space-grey/3.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/space-grey/4.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/space-grey/all.jpg'
-      //       }
-      //     ],
-      //   },
-      //   {
-      //     color: 'grey',
-      //     phoneColor: 'Midnight Green',
-      //     path: [
-      //       {
-      //         img: '../assets/img/11pro/midnight/0.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/midnight/1.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/midnight/2.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/midnight/3.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/midnight/4.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/midnight/all.jpg'
-      //       }
-      //     ],
-      //   },
-      //   {
-      //     color: 'palegoldenrod',
-      //     phoneColor: 'Gold',
-      //     path: [
-      //       {
-      //         img: '../assets/img/11pro/gold/0.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/gold/1.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/gold/2.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/gold/3.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/gold/4.jpg'
-      //       },
-      //       {
-      //         img: '../assets/img/11pro/gold/all.jpg'
-      //       }
-      //     ],
-      //   }
-      // ]
+      color: '',
+      memorySize: '',
+      display: '',
+      waterResistant: '',
+      camera: '',
+      frontCamera: '',
+      futures: '',
+      processor: '',
+      charging: '',
+      memory: this.fb.group([
+        {
+          size: '',
+          price: ''
+        },
+        {
+          size: '',
+          price: ''
+        },
+        {
+          size: '',
+          price: ''
+        }
+      ]),
+      image: [
+        {
+          color: 'silver',
+          phoneColor: 'Silver',
+          path: [
+            {
+              img: '../assets/img/11pro/silver/silver.jpg'
+            },
+            {
+              img: '../assets/img/11pro/silver/silver1.jpg'
+            },
+            {
+              img: '../assets/img/11pro/silver/silver2.jpg'
+            },
+            {
+              img: '../assets/img/11pro/silver/silver3.jpg'
+            },
+            {
+              img: '../assets/img/11pro/silver/silver4.jpg'
+            },
+            {
+              img: '../assets/img/11pro/silver/all.jpg'
+            }
+          ],
+        },
+        {
+          color: 'darkslategrey',
+          phoneColor: 'Space Grey',
+          path: [
+            {
+              img: '../assets/img/11pro/space-grey/0.jpg'
+            },
+            {
+              img: '../assets/img/11pro/space-grey/1.jpg'
+            },
+            {
+              img: '../assets/img/11pro/space-grey/2.jpg'
+            },
+            {
+              img: '../assets/img/11pro/space-grey/3.jpg'
+            },
+            {
+              img: '../assets/img/11pro/space-grey/4.jpg'
+            },
+            {
+              img: '../assets/img/11pro/space-grey/all.jpg'
+            }
+          ],
+        },
+        {
+          color: 'grey',
+          phoneColor: 'Midnight Green',
+          path: [
+            {
+              img: '../assets/img/11pro/midnight/0.jpg'
+            },
+            {
+              img: '../assets/img/11pro/midnight/1.jpg'
+            },
+            {
+              img: '../assets/img/11pro/midnight/2.jpg'
+            },
+            {
+              img: '../assets/img/11pro/midnight/3.jpg'
+            },
+            {
+              img: '../assets/img/11pro/midnight/4.jpg'
+            },
+            {
+              img: '../assets/img/11pro/midnight/all.jpg'
+            }
+          ],
+        },
+        {
+          color: 'palegoldenrod',
+          phoneColor: 'Gold',
+          path: [
+            {
+              img: '../assets/img/11pro/gold/0.jpg'
+            },
+            {
+              img: '../assets/img/11pro/gold/1.jpg'
+            },
+            {
+              img: '../assets/img/11pro/gold/2.jpg'
+            },
+            {
+              img: '../assets/img/11pro/gold/3.jpg'
+            },
+            {
+              img: '../assets/img/11pro/gold/4.jpg'
+            },
+            {
+              img: '../assets/img/11pro/gold/all.jpg'
+            }
+          ],
+        }
+      ]
     });
 
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(data => {
-      this.product = products[+data.get('productId')];
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
     });
-    this.defaultPhoneConfiguration();
+    this.getProduct();
   }
 
   ngAfterViewChecked() {
-    this.editProduct.controls['name'].setValue(this.product.name + 'sss');
-    this.editProduct.controls['price'].setValue(this.selectedPrice);
+    // this.editProduct.controls['name'].setValue(this.product.name);
+    // this.editProduct.controls['price'].setValue(this.selectedPrice);
+  }
+
+  getProduct() {
+    this.cartService.getProduct(this.id).subscribe((data: any) => {
+      this.product = data;
+      // assign first property from obj arr in var when load page
+      this.img = data.image[0].path[0].img;
+      this.sideImages = data.image[0].path;
+      this.selectedColor = data.image[0].phoneColor;
+      this.selectedMemory = data.memory[0].size;
+      this.selectedPrice = data.memory[0].price;
+    });
   }
 
   postJson(data) {
-    let id = 1;
+    const id = 1;
     console.log('before post', data, id);
     this.cartService.updateProduct(data, id).subscribe(() => {
     });
@@ -199,15 +211,6 @@ export class EditProductComponent implements OnInit, AfterViewChecked {
 
   sideImage(images) {
     this.img = images;
-  }
-
-  defaultPhoneConfiguration() {
-    // this method is used to take specific data with index 0 by default, as we execute it in ngOnInit
-    this.img = this.product.image[0].path[0].img;
-    this.selectedColor = this.product.image[0].phoneColor;
-    this.selectedMemory = this.product.memory[0].size;
-    this.selectedPrice = this.product.memory[0].price;
-    this.sideImages = this.product.image[0].path;
   }
 
   selectedPhoneColor(data) {
