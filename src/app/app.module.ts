@@ -16,6 +16,7 @@ import { HighlightDirective } from './_directives/highlight.directive';
 import { AdminComponent } from './admin/admin.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
+import { CreateProductComponent } from './admin/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { EditProductComponent } from './admin/edit-product/edit-product.componen
     AdminComponent,
     ProductsComponent,
     EditProductComponent,
+    CreateProductComponent,
   ],
   imports: [
     BrowserModule,
