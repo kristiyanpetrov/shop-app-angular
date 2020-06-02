@@ -15,16 +15,14 @@
         <form [formGroup]="editProduct">
           <b>Name: </b>
           <i>{{product?.name}}</i>
-          <div>
-            <input formControlName="name" placeholder="Product name">
-          </div>
-          <b>Price: </b>
+          <br>
+          <b>Current Price: </b>
           <i>{{selectedPrice | currency}}</i>
-          <div>
-            <input formControlName="price" placeholder="Product price">
+          <div formGroupName="memory">
+            <input formControlName="price" placeholder="New price">
           </div>
         </form>
-        <button (click)="postJson(editProduct.value)">post</button>
+        <button (click)="postJson(editProduct.value)">Update</button>
         <div class="mt-2" style="margin-left: -3px">
           <button type="button" class="btn ml-1" style="border-color: grey; font-weight: bold"
                   *ngFor="let sizeMemory of product?.memory"

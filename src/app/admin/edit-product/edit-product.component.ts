@@ -198,7 +198,7 @@ export class EditProductComponent implements OnInit, AfterViewChecked {
   }
 
   postJson(data) {
-    const id = 1;
+    const id = this.id;
     console.log('before post', data, id);
     this.cartService.updateProduct(data, id).subscribe(() => {
     });
