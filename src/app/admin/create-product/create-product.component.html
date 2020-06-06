@@ -1,1 +1,98 @@
-<p>create-product works!</p>
+<div class="container">
+  <form [formGroup]="productForm">
+    <div>
+      <label for="name">Product name:</label>
+      <br>
+      <input type="text" formControlName="name" id="name" autocomplete="off">
+    </div>
+    <br>
+    <div>
+      <label for="name">Display:</label>
+      <br>
+      <textarea id="display" formControlName="display" rows="2" cols="30" autocomplete="off"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="waterResistant">Water resistant:</label>
+      <br>
+      <textarea id="waterResistant" formControlName="waterResistant" rows="2" cols="30" autocomplete="off"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="camera">Camera:</label>
+      <br>
+      <textarea id="camera" formControlName="camera" rows="2" cols="30" autocomplete="off"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="frontCamera">Front camera:</label>
+      <br>
+      <textarea id="frontCamera" formControlName="frontCamera" rows="2" cols="30" autocomplete="off"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="futures">Futures:</label>
+      <br>
+      <textarea id="futures" formControlName="futures" rows="2" cols="30" autocomplete="off"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="processor">Processor:</label>
+      <br>
+      <textarea id="processor" formControlName="processor" rows="2" cols="30" autocomplete="off"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="charging">Charging:</label>
+      <br>
+      <textarea id="charging" formControlName="charging" rows="2" cols="30" autocomplete="off"></textarea>
+    </div>
+    <br>
+    <div formArrayName="memoryData">
+      <div *ngFor="let memoryData of memories().controls; let i = index"
+           [formGroupName]="i">
+        <label for="size">Memory Size:</label>
+        <br>
+        <input type="number" formControlName="size" id="size" placeholder="128GB">
+        <br>
+        <label for="price">Price:</label>
+        <br>
+        <input type="number" formControlName="price" id="price" placeholder="1380$">
+        <td>
+          <button (click)="removeMemory(i)" class="btn btn-danger mt-1">Remove</button>
+        </td>
+      </div>
+      <button class="btn btn-primary mt-2 mb-2" *ngIf="count === null" (click)="addMemory()">Click to add memory
+      </button>
+      <button class="btn btn-primary mt-2 mb-2" *ngIf="count !== null" (click)="addMemory()">Add another memory</button>
+    </div>
+    <div formGroupName="colors">
+      <div>
+        <label for="color">Please specify color</label>
+        <br>
+        <input type="text" formControlName="color" id="color" placeholder="grey, gold, pink">
+      </div>
+      <div>
+        <label for="phoneColor">Please specify color name</label>
+        <br>
+        <input type="text" formControlName="phoneColor" id="phoneColor" placeholder="Black, Silver, Gold">
+      </div>
+    </div>
+    <div formArrayName="imagePath">
+      <div *ngFor="let images of pathImages().controls; let i = index"
+           [formGroupName]="i">
+        <label for="img">Images</label>
+        <br>
+        <input type="file" formControlName="img" id="img" (click)="uploadImage()">
+      </div>
+      <button class="btn btn-primary mt-2 mb-2" (click)="addImage($event)">Add image</button>
+      <!--      <div formGroupName="path">-->
+      <!--        <label for="img">Images</label>-->
+      <!--        <br>-->
+      <!--        <input type="file" formControlName="img" id="img" (click)="uploadFile($event)">-->
+      <!--      </div>-->
+    </div>
+    <br>
+    <button class="btn btn-success" (click)="onCreate(productForm.value)">Create product</button>
+  </form>
+</div>
