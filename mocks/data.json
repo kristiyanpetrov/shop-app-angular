@@ -682,6 +682,53 @@
           ]
         }
       ]
+    },
+    {
+      "name": "test",
+      "price": "",
+      "color": "",
+      "memorySize": "",
+      "display": "1",
+      "waterResistant": "2",
+      "camera": "3",
+      "frontCamera": "4",
+      "futures": "5",
+      "processor": "6",
+      "charging": "7",
+      "memoryData": [
+        {
+          "size": 123,
+          "price": 3212312
+        },
+        {
+          "size": 321,
+          "price": 123213
+        },
+        {
+          "size": 321,
+          "price": 1111
+        },
+        {
+          "size": 33,
+          "price": 321
+        }
+      ],
+      "colors": {
+        "color": "gold",
+        "phoneColor": "Black"
+      },
+      "imagePath": [
+        {
+          "img": "C:\\fakepath\\Screenshot 2020-05-27 at 17.15.45.png"
+        },
+        {
+          "img": "C:\\fakepath\\Screenshot 2020-05-25 at 20.08.35.png"
+        },
+        {
+          "img": "C:\\fakepath\\Screenshot 2020-05-22 at 23.30.55.png"
+        }
+      ],
+      "id": 15
     }
   ]
 }
