@@ -31,6 +31,11 @@ export class CartService {
     return this.http.put(url, data);
   }
 
+  createProduct(data) {
+    const url = this.backendUrl + '/products'
+    return this.http.post(url, data);
+  }
+
   getShippingDetails() {
     return this.http.get('/assets/shipping.json');
   }
